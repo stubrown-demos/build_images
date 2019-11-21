@@ -6,7 +6,9 @@ pipeline {
             changeset 'images/*'
         }
         steps {
+
             sh 'ls'
+            println(currentBuild.changeSets)
         }
       }
     }
