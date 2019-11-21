@@ -1,9 +1,13 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
-      steps {
-        sh 'ls'
+      when {
+          changeset 'images/*'
+          beforeAgent true
+            stage('build') {
+                steps {
+                sh 'ls'
+            }
       }
     }
   }
