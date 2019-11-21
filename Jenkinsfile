@@ -9,6 +9,12 @@ pipeline {
 
             sh 'ls'
             println(currentBuild.changeSets)
+            script {
+                def changeSet = build.getChangeSet();
+
+                changeSet.getItems();
+
+            }
         }
       }
     }
