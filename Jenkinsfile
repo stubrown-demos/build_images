@@ -6,15 +6,16 @@ pipeline {
             changeset 'images/*'
         }
        */
+          environment {
+              COMMIT_FILES = sh(script: 'git show --pretty="" --name-only', , returnStdout: true).trim()
+
+          }
         steps {
 
-            script {
-                //cfiles=`git show --pretty="" --name-only`
-                environment {
-                    COMMIT_FILES = sh(script: 'pwd', , returnStdout: true).trim()
 
-                }
-                echo '${COMMIT_FILES}'
+                //cfiles=`git show --pretty="" --name-only`
+
+                sh 'echo "${COMMIT_FILES}"'
             }
         }
       }
