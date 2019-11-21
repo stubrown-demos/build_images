@@ -10,8 +10,10 @@ pipeline {
 
             script {
                 //cfiles=`git show --pretty="" --name-only`
-                def gitCommit = sh(returnStdout: true, script: 'git show --pretty="" --name-only').trim()
-                echo "${gitCommit}"
+                environment {
+                    COMMIT_FILES = sh(script: 'pwd', , returnStdout: true).trim()
+
+                }
             }
         }
       }
