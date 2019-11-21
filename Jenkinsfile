@@ -17,8 +17,8 @@ pipeline {
 
                 sh 'echo "${COMMIT_FILES}"'
             }
-        }
       }
-    }
   }
+}
+
 
