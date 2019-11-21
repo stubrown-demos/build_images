@@ -2,9 +2,10 @@ pipeline {
   agent any
   stages {
       stage('build') {
-        when{
+        /*when{
             changeset 'images/*'
         }
+       */
         steps {
 
 
@@ -26,6 +27,7 @@ pipeline {
                 }
 
             }
+            sh 'git rev-parse HEAD'
         }
       }
     }
