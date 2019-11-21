@@ -10,9 +10,13 @@ pipeline {
             sh 'ls'
             println(currentBuild.changeSets)
             script {
-                def changeSet = build.getChangeSet();
-
-                changeSet.getItems();
+                currentBuild.rawBuild.getChangeSets().each { cs ->
+                    cs.getItems().each { item ->
+                        item.getAffectedFiles().each { f ->
+                            println f
+                        }
+                    }
+                }
 
             }
         }
