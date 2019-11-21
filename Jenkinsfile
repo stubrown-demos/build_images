@@ -8,9 +8,10 @@ pipeline {
        */
         steps {
 
-
-            //cfiles=`git show --pretty="" --name-only`
-            def gitCommit = sh(returnStdout: true, script: 'git show --pretty="" --name-only').trim()
+            script {
+                //cfiles=`git show --pretty="" --name-only`
+                def gitCommit = sh(returnStdout: true, script: 'git show --pretty="" --name-only').trim()
+            }
         }
       }
     }
