@@ -10,7 +10,7 @@ pipeline {
            COMMIT_FILES = sh(script: 'git show --pretty="" --name-only', , returnStdout: true).trim()
        }
           steps {
-                sh 'echo found "${COMMIT_FILES}"'
+                sh 'echo found "[${COMMIT_FILES}"]'
             }
       }
   }
