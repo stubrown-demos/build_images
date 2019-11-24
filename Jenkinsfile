@@ -35,7 +35,7 @@ spec:
     }
     environment {
         COMMIT_FILES = sh(script: 'git show --pretty="" --name-only', , returnStdout: true).trim()
-        IMG_TO_BUILD = 'mvn1_jdk1.docker'
+        //IMG_TO_BUILD = 'mvn1_jdk1.docker'
         IMG_TO_BUILD = ${COMMIT_FILES}
     }
 
@@ -45,7 +45,7 @@ spec:
                 sh 'echo found "[${COMMIT_FILES}"]'
             }
         }
-        
+
         stage('Build Image'){
             steps {
                 sh 'echo still got "[${COMMIT_FILES}"]'
