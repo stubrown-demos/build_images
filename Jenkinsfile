@@ -58,6 +58,10 @@ spec:
             when{
                 changeset 'images/*'
             }
+            environment{
+              sh 'basename ${IMG_TO_BUILD}'
+              IMAGE_NAME = sh(script: 'basename ${IMG_TO_BUILD}', , returnStdout: true).trim()
+            }
             steps {
                 container(name: 'kaniko', shell: '/busybox/sh') {
                     withEnv(['PATH+EXTRA=/busybox']) {
