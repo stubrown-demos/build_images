@@ -37,6 +37,7 @@ spec:
         COMMIT_FILES = sh(script: 'git show --pretty="" --name-only', , returnStdout: true).trim()
         //IMG_TO_BUILD = 'mvn1_jdk1.docker'
         IMG_TO_BUILD = "${COMMIT_FILES}"
+        DOCKER_DEST = "stushq"
     }
 
     stages {
@@ -62,7 +63,7 @@ spec:
                     withEnv(['PATH+EXTRA=/busybox']) {
                         sh "echo about to run --dockerfile images/${IMG_TO_BUILD}"
                         sh '''#!/busybox/sh
-                    /kaniko/executor --dockerfile ${IMG_TO_BUILD} --destination stushq/hello-kaniko:latest
+                    /kaniko/executor --dockerfile ${IMG_TO_BUILD} --destination ${DOCKER_DEST}/hello-kaniko:latest
                     '''
                     }
                 }
