@@ -49,10 +49,10 @@ spec:
         }
         stage('Build Image'){
             steps {
-                sh 'scho still got "[${COMMIT_FILES}"]'
+                sh 'echo still got "[${COMMIT_FILES}"]'
             }
 
-            
+
         }
     }
 }
