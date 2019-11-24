@@ -49,6 +49,7 @@ spec:
         stage('Build Image'){
             steps {
                 sh 'echo still got "[${COMMIT_FILES}"]'
+                sh "echo about to run --dockerfile images/'${IMG_TO_BUILD}'"
             }
         }
 
@@ -59,6 +60,7 @@ spec:
             steps {
                 container(name: 'kaniko', shell: '/busybox/sh') {
                     withEnv(['PATH+EXTRA=/busybox']) {
+                        sh "echo about to run --dockerfile images/${IMG_TO_BUILD}"
                         sh '''#!/busybox/sh
                     /kaniko/executor --dockerfile images/${IMG_TO_BUILD} --destination stushq/hello-kaniko:latest
                     '''
