@@ -62,7 +62,7 @@ spec:
                 container(name: 'kaniko', shell: '/busybox/sh') {
                     withEnv(['PATH+EXTRA=/busybox']) {
                         sh '''#!/busybox/sh
-                    /kaniko/executor --dockerfile context images/mvn1_jdk1.docker --destination stuartcbrown/hello-kaniko:latest
+                    /kaniko/executor --dockerfile images/mvn1_jdk1.docker --destination stuartcbrown/hello-kaniko:latest
                     '''
                     }
                 }
