@@ -65,7 +65,7 @@ spec:
                 container(name: 'kaniko', shell: '/busybox/sh') {
                     withEnv(['PATH+EXTRA=/busybox']) {
                         //sh "echo dddddabout to run --dockerfile images/${IMG_NAME}"
-                        echo "building xxxx image ${IMG_TO_BUILD} to ${IMG_NAME}"
+                        echo "building image [${IMG_TO_BUILD}] to [${DOCKER_DEST}/${IMG_NAME}]"
                         sh '''#!/busybox/sh
                     /kaniko/executor --dockerfile images/${IMG_NAME} --destination ${DOCKER_DEST}/${IMG_NAME}:latest
                     '''
