@@ -36,7 +36,7 @@ spec:
     environment {
         COMMIT_FILES = sh(script: 'git show --pretty="" --name-only', , returnStdout: true).trim()
         //IMG_TO_BUILD = 'mvn1_jdk1.docker'
-        IMG_TO_BUILD = ${COMMIT_FILES}
+        IMG_TO_BUILD = "${COMMIT_FILES}"
     }
 
     stages {
