@@ -35,7 +35,6 @@ spec:
     }
     environment {
         COMMIT_FILES = sh(script: 'git show --pretty="" --name-only', , returnStdout: true).trim()
-        //IMG_TO_BUILD = 'mvn1_jdk1.docker'
         IMG_TO_BUILD = "${COMMIT_FILES}"
         DOCKER_DEST = "stushq"
     }
@@ -66,6 +65,7 @@ spec:
                 container(name: 'kaniko', shell: '/busybox/sh') {
                     withEnv(['PATH+EXTRA=/busybox']) {
                         //sh "echo dddddabout to run --dockerfile images/${IMG_NAME}"
+                        echo 'building xxxx image ${IMG_TO_BUILD} to ${IMG_NAME} '
                         sh '''#!/busybox/sh
                     /kaniko/executor --dockerfile images/${IMG_NAME} --destination ${DOCKER_DEST}/${IMG_NAME}:latest
                     '''
