@@ -59,15 +59,15 @@ spec:
                 changeset 'images/*'
             }
             environment{
-              
+
               IMAGE_NAME = sh(script: 'basename ${IMG_TO_BUILD}', , returnStdout: true).trim()
             }
             steps {
                 container(name: 'kaniko', shell: '/busybox/sh') {
                     withEnv(['PATH+EXTRA=/busybox']) {
-                        sh "echo about to run --dockerfile images/${IMG_TO_BUILD}"
+                        sh "echo about to run --dockerfile images/${IMG_NAME}"
                         sh '''#!/busybox/sh
-                    /kaniko/executor --dockerfile ${IMG_TO_BUILD} --destination ${DOCKER_DEST}/hello-kaniko:latest
+                    /kaniko/executor --dockerfile images/${IMG_NAME} --destination ${DOCKER_DEST}/hello-kaniko:latest
                     '''
                     }
                 }
