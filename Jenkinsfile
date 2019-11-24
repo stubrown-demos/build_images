@@ -67,7 +67,7 @@ spec:
                     withEnv(['PATH+EXTRA=/busybox']) {
                         //sh "echo dddddabout to run --dockerfile images/${IMG_NAME}"
                         sh '''#!/busybox/sh
-                    /kaniko/executor --dockerfile images/${IMG_NAME} --destination ${DOCKER_DEST}/${IMAGE_NAME}:latest
+                    /kaniko/executor --dockerfile images/${IMG_NAME} --destination ${DOCKER_DEST}/${IMG_NAME}:latest
                     '''
                     }
                 }
