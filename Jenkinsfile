@@ -47,6 +47,13 @@ spec:
                 sh 'echo found "[${COMMIT_FILES}"]'
             }
         }
+        stage('Build Image'){
+            steps {
+                sh 'scho still got "[${COMMIT_FILES}"]'
+            }
+
+            
+        }
     }
 }
 
