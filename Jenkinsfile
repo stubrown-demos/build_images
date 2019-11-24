@@ -60,7 +60,7 @@ spec:
             }
             environment{
 
-              IMAGE_NAME = sh(script: 'basename ${IMG_TO_BUILD}', , returnStdout: true).trim()
+              IMAGE_NAME = sh(script: 'basename "${IMG_TO_BUILD}"', , returnStdout: true).trim()
             }
             steps {
                 container(name: 'kaniko', shell: '/busybox/sh') {
