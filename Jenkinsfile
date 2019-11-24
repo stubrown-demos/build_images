@@ -51,9 +51,20 @@ spec:
         stage('Build Image'){
             steps {
                 sh 'echo still got "[${COMMIT_FILES}"]'
+
+
             }
 
 
+        }
+        stage('Really build image'){
+            container(name: 'kaniko', shell: '/busybox/sh') {
+                withEnv(['PATH+EXTRA=/busybox']) {
+                    sh '''#!/busybox/sh
+                    /kaniko/executor -f context images/mvn1_jdk1.docker --destination stuartcbrown/hello-kaniko:latest
+                    '''
+                }
+            }
         }
     }
 }
