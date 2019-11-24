@@ -65,7 +65,7 @@ spec:
             steps {
                 container(name: 'kaniko', shell: '/busybox/sh') {
                     withEnv(['PATH+EXTRA=/busybox']) {
-                        sh "echo about to run --dockerfile images/${IMG_NAME}"
+                        sh "echo dddddabout to run --dockerfile images/${IMG_NAME}"
                         sh '''#!/busybox/sh
                     /kaniko/executor --dockerfile images/${IMG_NAME} --destination ${DOCKER_DEST}/hello-kaniko:latest
                     '''
