@@ -36,29 +36,26 @@ spec:
     environment {
         COMMIT_FILES = sh(script: 'git show --pretty="" --name-only', , returnStdout: true).trim()
         IMG_TO_BUILD = 'mvn1_jdk1.docker'
+        IMG_TO_BUILD = ${COMMIT_FILES}
     }
 
     stages {
         stage('Process Image') {
-            /*when{
-        changeset 'images/*'
-      }
-      */
-
             steps {
                 sh 'echo found "[${COMMIT_FILES}"]'
             }
         }
+        
         stage('Build Image'){
             steps {
                 sh 'echo still got "[${COMMIT_FILES}"]'
-
-
             }
-
-
         }
+
         stage('Really build image'){
+            when{
+                changeset 'images/*'
+            }
             steps {
                 container(name: 'kaniko', shell: '/busybox/sh') {
                     withEnv(['PATH+EXTRA=/busybox']) {
