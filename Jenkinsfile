@@ -45,9 +45,9 @@ spec:
             when{
                 changeset 'images/*'
             }
-
-            INDID = IMG_TO_BUILD.split("")
-
+            script {
+                INDID = IMG_TO_BUILD.split("")
+            }
             environment{
 
               IMG_NAME = sh(script: 'basename "${IMG_TO_BUILD}"', , returnStdout: true).trim()
