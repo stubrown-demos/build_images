@@ -40,14 +40,15 @@ spec:
     }
 
     stages {
-        buildImage()
-
+        stage('Building docker image') {
+            buildImage()
+        }
 
     }
 }
 
 void buildImage(){
-    stage('Building docker image'){
+    //stage('Building docker image'){
         when{
             changeset 'images/*'
         }
@@ -66,7 +67,7 @@ void buildImage(){
                 }
             }
         }
-    }
+    //}
 
 }
 
