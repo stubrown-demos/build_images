@@ -45,9 +45,7 @@ spec:
             when{
                 changeset 'images/*'
             }
-            script {
-
-            }
+            
             environment{
 
               IMG_NAME = sh(script: 'basename "${IMG_TO_BUILD}"', , returnStdout: true).trim()
