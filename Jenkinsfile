@@ -52,7 +52,7 @@ spec:
             }
             steps {
                 script{
-                    INDID = COMMIT_FILES.split("")
+                    INDID = COMMIT_FILES.split(" ")
                 }
                 container(name: 'kaniko', shell: '/busybox/sh') {
                     withEnv(['PATH+EXTRA=/busybox']) {
