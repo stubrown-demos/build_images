@@ -45,13 +45,15 @@ spec:
             when{
                 changeset 'images/*'
             }
-            
+
             environment{
 
               IMG_NAME = sh(script: 'basename "${IMG_TO_BUILD}"', , returnStdout: true).trim()
             }
             steps {
-                INDID = IMG_TO_BUILD.split("")
+                script{
+                    INDID = IMG_TO_BUILD.split("")
+                }
                 container(name: 'kaniko', shell: '/busybox/sh') {
                     withEnv(['PATH+EXTRA=/busybox']) {
                         echo "building image [${IMG_TO_BUILD}] to [${DOCKER_DEST}/${IMG_NAME}]"
