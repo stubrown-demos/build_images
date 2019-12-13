@@ -41,27 +41,31 @@ spec:
 
     stages {
 
-        stage('Building docker image'){
-            when{
-                changeset 'images/*'
-            }
-            environment{
 
-              IMG_NAME = sh(script: 'basename "${IMG_TO_BUILD}"', , returnStdout: true).trim()
-            }
-            steps {
-                container(name: 'kaniko', shell: '/busybox/sh') {
-                    withEnv(['PATH+EXTRA=/busybox']) {
-                        echo "building image [${IMG_TO_BUILD}] to [${DOCKER_DEST}/${IMG_NAME}]"
-                        sh 'sleep 60'
-                        sh '''#!/busybox/sh
+    }
+}
+
+void buildImage(){
+    stage('Building docker image'){
+        when{
+            changeset 'images/*'
+        }
+        environment{
+
+            IMG_NAME = sh(script: 'basename "${IMG_TO_BUILD}"', , returnStdout: true).trim()
+        }
+        steps {
+            container(name: 'kaniko', shell: '/busybox/sh') {
+                withEnv(['PATH+EXTRA=/busybox']) {
+                    echo "building image [${IMG_TO_BUILD}] to [${DOCKER_DEST}/${IMG_NAME}]"
+                    sh 'sleep 60'
+                    sh '''#!/busybox/sh
                     /kaniko/executor --dockerfile images/${IMG_NAME} --destination ${DOCKER_DEST}/${IMG_NAME}:latest
                     '''
-                    }
                 }
             }
         }
     }
-}
 
+}
 
