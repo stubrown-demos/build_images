@@ -35,7 +35,7 @@ spec:
     }
     environment {
         COMMIT_FILES = sh(script: 'git show --pretty="" --name-only', , returnStdout: true).trim()
-        IMG_TO_BUILD = "${COMMIT_FILES}"
+        //IMG_TO_BUILD = "${COMMIT_FILES}"
         DOCKER_DEST = "stushq"
     }
 
