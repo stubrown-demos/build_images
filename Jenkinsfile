@@ -40,6 +40,7 @@ spec:
     }
 
     stages {
+        buildImage()
 
 
     }
